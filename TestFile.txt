@@ -1,0 +1,852 @@
+1.教师在线每天打卡送金币
+	打卡送金币
+
+
+	接口地址: http://**/user_sign/
+
+
+
+	请求方式===[get]
+	请求参数
+		[*必填] uid ----- 用户名
+		[*必填] source -----安卓-APK  /  苹果-IPA
+		[*必填] type -----1-查询是否打开 2-去打卡
+
+	返回数据字段说明===[json数据]
+		code=========[1：（已打卡或者打卡成功）/0：（未打卡或打卡失败）/3：此用户已打过卡]
+			code为1时会返回 info 个人信息
+		msg======== '相对应状态说明'
+
+
+
+2.教师在线做任务送金币接口
+	接口地址：http://tl.huatu.com/gold/task_give_gold
+
+	传递参数p，先json 后3des加密
+
+	包含参数：uid 用户uid
+
+	gold =》 赠送金币数
+
+	note =>  类型（比如传头像赠送，每日签到赠送）
+
+	source=> 来源， 安卓 APK,苹果 IPA
+
+
+	返回 code 1成功， 0 失败， -1 参数为空
+
+3.教师在线-用户分享做任务送金币
+	说明文档
+	查询用户是否第一次分享
+
+
+	接口地址: http://**/user_share/get_user_share
+
+
+
+	请求方式===[get]
+	方式：组合参数值：uid,type,source以数组形式json后， 用3des加密此字符串，赋值给 p
+	请求参数
+		[*必填] uid ----- 用户uid
+		[*必填] type ----- （1-头像，2-微信好友，3-微博好友，4-qq好友，5-微信朋友圈，6-QQ空间，7-应用市场,10-完成一次纠错）
+		[*必填] source ----- 安卓-APK   苹果-IOS 
+
+	返回数据字段说明===[json数据]
+		code=========[1：首次分享成功，并赠送金币/2：分享成功/0：分享失败/-2：缺少参数]
+		info ======== 【0--首次分享】
+		msg======== '相对应状态说明'
+
+4.教师在线公众号推送文章
+
+	文章推送
+
+
+	接口地址: http://**/article/push_list
+
+
+
+	请求方式===[get]
+	请求参数
+		页码----数字
+	请求形式
+		http://**/article/push_list/1
+
+	返回数据字段说明===
+5.教师在线找回密码
+	说明文档
+	找回密码
+
+
+	接口地址: http://**/register/forgot_password
+
+
+
+	请求方式===[post]
+	请求参数
+		[*必填] mobile ----- 手机号码
+		[*必填] password ----- 要修改的密码（用3des加密）
+
+	返回数据字段说明===[json数据]
+		code=========[1：成功/0：失败/-2：缺少参数]
+		msg======== '相对应状态说明'
+
+
+
+6.教师在线更新个人信息
+	更新个人信息
+
+
+	接口地址: http://**/register/update_user_info
+
+
+
+	请求方式===[post]
+	请求参数
+		[*必填] uid ----- 用户id
+			   nickname ==== 昵称
+			   sex ======= 性别（0-女  1-男）
+			   face ===== 图像（文件类型）
+	                   source ===== 类型(Android默认传‘APK’，IOS默认传‘IPA')
+
+	返回数据字段说明===[json数据]
+		code=========[1：成功/0：失败/-2：缺少参数/-3：没有可更新的数据]
+	        info ======== 成功情况下，返回个人信息
+		msg======== '相对应状态说明'
+
+
+7.教师在线面试视频科目列表接口
+	面试视频科目列表
+
+
+	接口地址: http://**/video_nav/subject
+
+
+
+	请求方式===[get]
+	请求参数 
+	     【*必填】version ======== app对应版本号
+
+	返回数据字段说明===[json数据]
+		code=========[1：成功/0：没有数据]
+		version=========对应app发版的版本号
+		list=========列表数据
+		msg======== 相对应状态说明
+
+
+8.教师在线付费直播点击立即购买创建订单接口
+	1.接口地址 ： http://tl.huatu.com/live/create_live_order
+
+	get或post传递参数p ， 值为json 。
+
+	id => 视频id
+
+	uid=>用户uid
+
+	source => APK 或 IPA (APK安卓，IPA IOS)
+
+	例子：p={"id":"20656","uid":"1431701"} 
+
+
+	返回参数：code => -1,参数为空，0 失败，1 成功·,data : 订单号
+
+
+9.教师在线绑定手机号接口
+绑定手机号
+
+
+接口地址: http://**/register/bind_mobile
+
+
+
+请求方式===[post]
+请求参数
+	[*必填] mobile ----- 手机号码
+	[*必填] uid ----- 用户uid
+
+返回数据字段说明===[json数据]
+	code=========[1：绑定成功/0：绑定失败/-1：缺少参数/-5：手机号已绑定]
+	msg======== '相对应状态说明'
+
+
+10.教师在线更新学段科目城市考试类型接口文档
+更新学段科目城市考试类型
+
+
+接口地址: http://**/register/update_info
+
+
+
+说明----所有参数以数组形式json后赋值给P，然后以post方式传递
+请求方式===[post]
+请求参数
+	[*必填] uid ----- 用户uid
+	type_id ------ 考试类型
+	city ------ 城市
+        province ------ 省份
+	sec_id ------ 学段
+	sub_id ------ 科目
+
+返回数据字段说明===[json数据]
+	code=========[1：更新成功/0：更新失败]
+	msg======== '相对应状态说明'
+
+
+
+11.充值金币创建订单、支付宝回调接口,金币支付接口,金币账单接口、IOS内购充值金币
+		1. 充值金币创建订单
+
+		接口地址 ： http://tl.huatu.com/gold/create_order
+
+		示例：p=385B00BF799521728F8B8080E65DCA0A6D64111BFDE65BE6323720B5598D5151B2DB22EF1F837DFFA0E5DC92A7C60A97D0AA5D277F31DBCF24A0C1CC85F73006
+
+		post传递参数p ，先json再3des加密
+
+		p包含参数：
+
+		   uid=>用户uid
+
+		   gold=>充值金币数
+
+		   type=> 1 （充值）  2 （消费）
+
+		   source => APK 或 IPA （安卓传APK，IOS传IPA）
+
+
+		返回参数json ： code 1 成功，0 数据库创建订单失败 ， -1 参数p为空
+
+		oid  商户订单号
+
+
+
+		2.金币支付接口
+
+
+		接口地址 ： http://tl.huatu.com/gold/gold_pay
+
+		post传递参数p ，先json再3des加密
+
+		示例：p=385B00BF799521728F8B8080E65DCA0A6D64111BFDE65BE6323720B5598D5151B2DB22EF1F837DFFA0E5DC92A7C60A97D0AA5D277F31DBCF24A0C1CC85F73006
+
+
+		p包含参数：
+
+		   uid=>用户uid
+
+		   golds => 消费金币数
+
+		   type=> 1 （直播）
+
+		   oid = > 订单号 
+
+		   
+
+		返回参数json ： code =1 成功，code=2 金币不足,code = 3 订单不存在， code = 4 此订单已付款，重复付款,code = 0服务器异常 ， code= -1 参数p为空或缺少参数
+
+
+
+		3.金币账单接口
+
+
+		接口地址 ： http://tl.huatu.com/gold/bill_list
+
+		示例：p={"uid":"42","index":"1","limit":"5"} 
+
+
+		p包含参数：
+
+		   uid=>用户uid
+
+		   index=> 页码，从1开始
+
+		   limit=>5 每页取条数
+
+		   
+
+		返回参数json ： code =1 成功，code = 0无数据， code= -1 参数p为空或缺少参数
+
+		type = 1 代表充值，2 代表消费
+
+
+
+
+
+		4.支付宝回调接口
+
+		回调地址：http://tl.huatu.com/api/alipay/notify_url.php
+
+		POST方式传递参数
+
+		seller_id = 1815367517@qq.com
+
+		partner = 2088121578669641
+
+		_input_charset = utf-8
+
+		subject = 商品名称
+
+		total_fee=总金额
+
+		body = 0 金币充值，1 直播购买
+
+		out_trade_no:订单号
+
+		安全校验码(Key)： 1db7xwknysdmaf2c33j32g99hns3rxwm
+
+
+
+
+		5.IOS内购充值金币接口
+
+
+		接口地址 ： http://tl.huatu.com/gold/IOS_Purchase_Gold
+
+		get或post传递参数P，先json 后3des加密
+
+		示例：p=CBD64823DC7CD6411C588D4DCB8A9E04A3B9825522334EDA4B6B9585FB950DE9E1514AA68D3C57840AD91EB819FA2F0E
+
+
+		p包含参数：
+
+		   oid=> 金币订单号
+
+		   type=> 1 代表金币充值
+
+		   
+
+		返回参数json ： code =1 成功，code = 0失败， code= 2已支付
+
+
+12.教师在线注册登录接口
+说明文档
+验证手机号是否已注册
+
+
+接口地址: http://**/register/is_register
+
+
+
+请求方式===[get]
+请求参数
+	[*必填] mobile ----- 手机号码
+
+返回数据字段说明===[json数据]
+	code=========[1：已注册/0：未注册]
+	msg======== '相对应状态说明'
+
+
+
+13.教师在线获得用户 资料接口（昵称 、头像、金币数）
+	教师在线获得用户 资料接口（昵称 、头像、金币数）
+
+	接口地址：http://tl.huatu.com/member/get_userInfo
+
+
+	示例：http://tl.huatu.com/member/get_userInfo?uid=1
+
+
+	get或post传递参数uid 
+
+
+	返回 code 1 成功，0 没有查到此用户，-1 没有传递参数
+
+
+	nickname : 昵称
+
+	mobile:电话
+
+	sec_id :学段
+
+	sub_id:科目
+
+	type_id:考试类型
+
+	face:头像
+
+	sex:性别
+
+	gold:金币
+
+	city:城市
+
+	ad_title:广告标题
+
+	ad_url：广告url
+
+	ad_pic：广告地址
+
+
+14.教师在线注册登录接口
+	发送手机验证码
+
+
+	接口地址: http://**/register/send_sms
+
+
+
+	请求方式===[get]
+	请求参数
+		[*必填] mobile ----- 手机号码
+	        [*必填] code ----- 待发送的随机码
+
+	返回数据字段说明===[json数据]
+		code=========[1：成功/-0：失败/-3：手机号已存在]
+		msg======== '相对应状态说明'
+
+
+
+	用户注册
+
+
+	接口地址: http://**/register
+
+
+
+	请求方式===[post]
+
+	请求参数 --参数以数组形式，json后再3des加密赋值给参数p
+		[*必填] type ----- 注册类型：1-手机号注册/2-QQ注册/3-微信注册/4-微博注册
+			password -----用户密码（手机号注册时需要填写，其它方式可为空）
+			nickname -----用户昵称
+			face -----用户图像（此字段不要放在p参数内加密）
+			secypt_keys ------ QQ,微信，微博的 唯一key
+			third_face ----- 第三方注册的图像
+			mobile ----- 手机号码  
+
+	返回数据字段说明===[json数据]
+		code=========[1：成功/0：失败/-2:缺少参数/-3：缺少唯一key(适用于除了手机号注册以外的方式)/-4:已授权，已注册]
+		data=========返回用户的个人信息
+		msg======== '相对应状态说明' 
+
+
+
+	用户登录
+
+
+	接口地址: http://**/register/login
+
+
+
+	请求方式===[get]
+	请求参数--参数以数组形式，json后再3des加密赋值给参数p
+		[*必填] p ----- 包含以下参数
+			[*必填] mobile ----- 手机号码
+			[*必填] password -----账号密码
+
+
+	返回数据字段说明===[json数据]
+		code=========[1：成功/0：没有此用户或失败/-2:密码错误]
+		info=========登录成功的前提下会返回个人信息
+			id ======== 用户id
+	                password ===== 用户密码
+	                nickname=====昵称
+	                mobile=====手机号码
+			sec_id=====学段
+			sub_id=====科目
+			type_id=====考试类型
+			sex=====性别
+			gold=====金币
+			city=====城市
+			face=====用户图像
+		msg======== '相对应状态说明'
+
+
+16.直播收藏列表，加入收藏、取消收藏接口
+		1.直播收藏列表
+
+		接口地址：http://tl.huatu.com/collect/collect_list
+
+		调试模式：http://tl.huatu.com/collect/collect_list?p={"index":"1","limit":"8","uid":"1234"}
+
+		get或post方式传递参数p，json
+
+		uid => 用户uid 必传
+
+		type=》 1 ，直播视频
+
+		index =》 1 页码，默认1
+
+		limit=>每页条数，默认5
+
+		返回 code = 1 成功， -1 传参数为空， 0 没有数据
+
+		ob_id : 视频id
+
+		date_time :收藏时间
+
+		name : 收藏名
+
+		img_url:图片地址
+
+		price :价格
+
+
+
+
+		2.加入收藏接口
+
+
+
+		接口地址：http://tl.huatu.com/collect/add_collect
+
+		调试模式：http://tl.huatu.com/collect/add_collect?p={"ob_id":"123123","uid":"555","type":"1","name":"测试","img_url":"https://ss2.baidu.com/6ONYsjip0QIZ8tyhnq/it/u=296493428,252326694&fm=58","price":"22.22"}
+
+		get或post方式传递参数p，json
+
+		ob_id= 视频id
+
+		type=1 类型，1代表直播视频
+
+		uid=用户uid
+
+		name=视频名称
+
+		img_url:视频图片链接
+
+		price：价格，免费传0
+
+
+		取消收藏接口跟这个一样，
+
+		传参数ob_id , uid , tpye, 就可以取消这个收藏了。返回参数一样。1成功 0失败
+
+
+		返回参数：code 1 成功 0失败 -1 参数为空
+
+
+
+
+
+		 
+
+		3.查询是否收藏接口
+
+		接口地址：http://tl.huatu.com/collect/is_collect
+
+		调试地址：http://tl.huatu.com/collect/is_collect?p={"ob_id":"123","uid":"123"}
+
+		get或post方式传递参数p，json
+
+		uid=用户uid
+
+		type= 1 代表直播，不传默认1
+
+		ob_id = 视频id 。
+
+
+
+		返回结果 code = -1 参数p为空， 1 收藏过， 0 没收藏。
+
+
+
+
+17.面试视频接口列表，详情接口
+		面试视频列表接口地址：http:/**.video/get_list
+		请求方式：get
+		示例：http:/**.video/get_list？subid=语文&audid=幼教&secid=讲课&offset=10&pnums=2
+		参数说明：
+		subid	==== 科目选择
+		audid	==== 面试形式
+		secid	==== 学段
+		offset	==== 每页获取的记录数（默认10条）
+		pnums	==== 页码（默认1）
+
+		返回值：json
+		返回参数说明：
+		id	==== 视频id,获取详情时用此id
+		title	==== 视频标题
+		thumb	==== 视频封面图
+		click	==== 点击量
+		{
+		code: "1",
+		list: [
+		{
+		id:1
+		title: "现代散文《背影》",
+		thumb: "",
+		click: "3"
+		},
+		{
+		id:2
+		title: "小学语文试讲《济南的冬天》",
+		thumb: "",
+		click: "9"
+		}
+		]
+		}
+
+		《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《《
+
+		面试视频详情接口地址：http:/**.video/get_info
+		请求方式：get
+		示例：http:/**.video/get_info?id=2
+		参数说明：
+		(必传) id ==== 视频id
+
+
+		返回值：json
+		返回参数说明：
+
+		code:"1"
+
+		data:{
+
+		title	==== 视频标题
+		text  ==== 简介
+		infomation	==== 课文
+		teach_plan	==== 教案
+		cc_user	==== cc用户账户
+		courses_id	==== 视频id
+
+		uid====cc账户uid
+
+		api_key=====cc账号密钥 
+
+		"}
+
+
+
+/*********************2016年5月8日live模块，修改的*************************************/
+
+
+
+
+21.直播视频列表
+		接口地址：http://5beike.hteacher.net/teacher/index.php/liveDb/get_live_list
+
+		get或post传递参数p：(默认为第一页30条)
+			page=>页码（默认1页）,
+            pageSize=>每页条数（默认30条）,
+            netClassCategoryId=>课程分类,
+         	examtype=>考试类型,
+            classPhase=>考试字段,
+            classType=>课程班型,
+            subjectType=>考试科目,
+            Province=>地区
+
+        返回参数说明(json):
+        	code => -1,参数为空，0 数据为空，1 有数据
+        	rid=>直播id
+        	ClassNo=>课程编号
+        	TeacherDesc=>老师
+        	zhibotime=>直播时间
+        	is_zhibo=>是否直播 ,1 直播 0 回看
+			is_living=>是否正在直播	，1 正在直播	2不是直播
+			buy_lives=>购买人数
+			lessionCount=>课时(int)
+			Title=>标题
+			scaleimg=>封面图片
+			ActualPrice=>价格(double)
+
+			
+
+22.教师在线 根据id获取直播详情接口
+
+
+		接口地址 ： http://5beike.hteacher.net/teacher/index.php/liveDb/get_id_video
+
+		get或post传递参数rid
+
+		get或post传递参数uid(用来判断用户是否购买过此直播，未登录就不传)
+
+		返回参数：code => -1,参数为空，0 数据为空，1 有数据
+
+		rid=>视频rid
+
+		Title=> 标题
+
+		TeacherDesc =>老师
+
+		EffectDateDesc=>有效时间
+
+		content=>详情
+
+		zhibotime=>直播开始时间
+
+		zhiboendtime=>直播结束时间
+
+		is_fufei= 0免费，1付费
+
+		scaleimg :图片地址
+
+		is_zhibo：0往期 1是直播
+
+		is_buy:用户是否购买过此直播(1,购买过已付款，0未购买过)
+
+		ActualPrice:价格
+
+		is_living：0不在直播，1真正直播
+
+		photo_url=>教师图片
+
+		Brief=>教师简介
+		lessionCount=>课时
+		TypeName=>班次类型
+
+23.教师在线 根据id获取直播目录接口
+
+
+		接口地址 ： http://5beike.hteacher.net/teacher/index.php/liveDb/get_id_list
+
+		get或post传递参数
+
+		rid => 直播rid
+		uid =>用户uid
+
+		返回参数：code => -1,参数为空，0 数据为空，1 有数据
+
+		rid => 视频rid
+
+		Title => 直播标题
+
+		timeLength=>视频时长
+
+		zhibotime =>直播时间,
+
+		kouling =>直播
+
+		zhibourl=>点播id
+
+		lubourl=>录播id
+		
+		is_buy=>是否购买 1购买。0没有
+
+		video_status: 0正在播放，2，直播未开始,3，录播，4录播地址未生成
+
+
+24.教师在线 根据uid获取我的直播列表接口
+
+		接口地址 ： http://5beike.hteacher.net/teacher/index.php/liveDb/get_my_lives
+
+		get或post传递参数p
+		P={"uid":"222","index":"33"}
+
+		uid => 用户uid
+		index=>页码
+		limit=>每页数量
+
+		返回参数：code => -1,参数为空，0 数据为空，1 有数据
+
+		rid => 视频rid
+
+		Title => 直播标题
+
+		scaleimg =>直播图片
+
+		buy_lives=>购买人数
+
+		lessionCount=>课时
+		ActualPrice =>价格
+		is_zhibo=>是否直播 1是。0不是，-1 参数为空
+		TeacherDesc=>教师
+		
+
+25.教师在线 加入我的直播我的直播
+
+		接口地址 ： http://5beike.hteacher.net/teacher/index.php/liveDb/add_my_videos
+
+		get或post传递参数
+		{"rid":"1323","uid":"123123"}
+
+		uid => 用户uid
+		rid => 视频id
+
+		返回参数：code => -1,参数为空，1 增加成功，2重复添加
+
+
+
+
+27.get_my_lives 直播播放页详情]rid：课程接口
+
+	接口地址：http://5beike.hteacher.net/teacher/index.php/liveDb/get_play_info?rid=46809
+	get或者post参数：rid
+
+	返回参数：code => -1,参数为空，0 数据为空，1 有数据
+
+		number => 视频rid
+
+		title => 直播标题
+
+		timeLength =>视频时长
+
+		zhibourl=>直播地址
+
+		lubourl=>录播地址
+		ActualPrice =>价格
+		kouling=>口令
+		content=>讲义
+
+++++++++++++++++++++++2016年5月16日====================================================
+
+26.教师在线 直接购买创建订单
+
+		接口地址 ： http://5beike.hteacher.net/teacher/index.php/liveDb/create_live_order
+
+		get或post传递参数p ， 值为json 。
+
+			rid => 视频rid
+
+			uid=>用户uid
+
+			source => APK 或 IPA (APK安卓，IPA IOS)
+
+			isHasJy=>是否邮寄讲义
+
+			addressId=>讲义寄送地址Id
+
+	例子：p={"rid":"20656","uid":"1431701","isHasJy":"0","addressId":"333","source":"APK"} 
+
+
+	返回参数：code => -1,参数为空，0 失败，1 成功,data : 订单号
+
+28：
+	user_adderss	增加用户地址
+	接口地址：http://5beike.hteacher.net/teacher/index.php/user_adderss/add_address/get_play_info?p
+	传参:p
+		p={"uid":"1","name":"测试","tel":"18932486744","address":"小区","province":"江西"}
+	返回参数：code => -1,参数为空，0 失败，1 成功	
+
+29:
+	get_ud_list 	获取用户地址
+	http://5beike.hteacher.net/teacher/index.php/user_address/get_ud_list?p={"uid":"1"}	
+	传参:p
+		p={"uid":"1"}
+	返回参数：code => -1,参数为空，0 数据为空，1 有数据
+		id=>地址id
+		ui=>用户id
+		name=>收货人姓名
+		address=>收货人街道信息
+		create_time=>创建日期
+		update_time=>修改日期
+		province=>省市区
+
+30:
+	update_address	修改地址信息
+	http://5beike.hteacher.net/teacher/index.php/user_address/update_address?p={"id":"1","name":"测试","tel":"18932486744","address":"小区","province":"江西"}
+	传参:p
+		p={"id":"1","name":"测试","tel":"18932486744","address":"小区","province":"江西"}
+	返回参数：code => -1,参数为空，0 失败，1 成功
+	
+31
+	get_id_address	查看详情
+	http://5beike.hteacher.net/teacher/index.php/user_address/get_id_address?id=4
+	传参：id
+	id=4
+	返回参数：code => -1,参数为空，0 数据为空，1 有数据
+		id=>地址id
+		ui=>用户id
+		name=>收货人姓名
+		address=>收货人街道信息
+		create_time=>创建日期
+		update_time=>修改日期
+		province=>省市区
+
+32	del_address  删除用户地址
+	http://5beike.hteacher.net/teacher/index.php/user_address/del_id_address?id=7
+	传参：id
+	id=4
+	返回参数：code => -1,参数为空，0 失败，1 成功
+
+33. del_my_videos 删除我的直播
+	http://5beike.hteacher.net/teacher/index.php/liveDb/del_my_videos?p
+	传参：p={"rid":"46981","uid":"3301601"}
+	返回参数：code => -1,参数为空，0 失败，1 成功，2已删除
