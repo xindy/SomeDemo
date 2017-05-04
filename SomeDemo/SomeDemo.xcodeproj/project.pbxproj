@@ -15,6 +15,7 @@
 		CB74F99D1EACDA6C00B8B299 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB74F99B1EACDA6C00B8B299 /* LaunchScreen.storyboard */; };
 		CB74F9A81EACDA6C00B8B299 /* SomeDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB74F9A71EACDA6C00B8B299 /* SomeDemoTests.m */; };
 		CB74F9B31EACDA6C00B8B299 /* SomeDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB74F9B21EACDA6C00B8B299 /* SomeDemoUITests.m */; };
+		CBAEAA291EBB7BE8006140DD /* BYGraphicsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBAEAA271EBB7BE8006140DD /* BYGraphicsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,8 @@
 		CB74F9AE1EACDA6C00B8B299 /* SomeDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SomeDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB74F9B21EACDA6C00B8B299 /* SomeDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SomeDemoUITests.m; sourceTree = "<group>"; };
 		CB74F9B41EACDA6C00B8B299 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBAEAA271EBB7BE8006140DD /* BYGraphicsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BYGraphicsView.m; sourceTree = "<group>"; };
+		CBAEAA281EBB7BE8006140DD /* BYGraphicsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BYGraphicsView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +104,7 @@
 		CB74F98C1EACDA6C00B8B299 /* SomeDemo */ = {
 			isa = PBXGroup;
 			children = (
+				CBAEAA261EBB7BC0006140DD /* DrawGraph */,
 				CB74F9901EACDA6C00B8B299 /* AppDelegate.h */,
 				CB74F9911EACDA6C00B8B299 /* AppDelegate.m */,
 				CB74F9931EACDA6C00B8B299 /* ViewController.h */,
@@ -138,6 +142,15 @@
 				CB74F9B41EACDA6C00B8B299 /* Info.plist */,
 			);
 			path = SomeDemoUITests;
+			sourceTree = "<group>";
+		};
+		CBAEAA261EBB7BC0006140DD /* DrawGraph */ = {
+			isa = PBXGroup;
+			children = (
+				CBAEAA271EBB7BE8006140DD /* BYGraphicsView.m */,
+				CBAEAA281EBB7BE8006140DD /* BYGraphicsView.h */,
+			);
+			path = DrawGraph;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,6 +285,7 @@
 			files = (
 				CB74F9951EACDA6C00B8B299 /* ViewController.m in Sources */,
 				CB74F9921EACDA6C00B8B299 /* AppDelegate.m in Sources */,
+				CBAEAA291EBB7BE8006140DD /* BYGraphicsView.m in Sources */,
 				CB74F98F1EACDA6C00B8B299 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -496,6 +510,7 @@
 				CB74F9B91EACDA6C00B8B299 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB74F9BA1EACDA6C00B8B299 /* Build configuration list for PBXNativeTarget "SomeDemoTests" */ = {
 			isa = XCConfigurationList;
@@ -504,6 +519,7 @@
 				CB74F9BC1EACDA6C00B8B299 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		CB74F9BD1EACDA6C00B8B299 /* Build configuration list for PBXNativeTarget "SomeDemoUITests" */ = {
 			isa = XCConfigurationList;
@@ -512,6 +528,7 @@
 				CB74F9BF1EACDA6C00B8B299 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
