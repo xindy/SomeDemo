@@ -15,6 +15,7 @@
 		CB74F99D1EACDA6C00B8B299 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB74F99B1EACDA6C00B8B299 /* LaunchScreen.storyboard */; };
 		CB74F9A81EACDA6C00B8B299 /* SomeDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB74F9A71EACDA6C00B8B299 /* SomeDemoTests.m */; };
 		CB74F9B31EACDA6C00B8B299 /* SomeDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = CB74F9B21EACDA6C00B8B299 /* SomeDemoUITests.m */; };
+		CB91A5261ECB45C6005F18B3 /* BYScalableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = CB91A5251ECB45C6005F18B3 /* BYScalableHeaderView.m */; };
 		CBAEAA291EBB7BE8006140DD /* BYGraphicsView.m in Sources */ = {isa = PBXBuildFile; fileRef = CBAEAA271EBB7BE8006140DD /* BYGraphicsView.m */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,8 @@
 		CB74F9AE1EACDA6C00B8B299 /* SomeDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SomeDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB74F9B21EACDA6C00B8B299 /* SomeDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SomeDemoUITests.m; sourceTree = "<group>"; };
 		CB74F9B41EACDA6C00B8B299 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB91A5241ECB45C6005F18B3 /* BYScalableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BYScalableHeaderView.h; sourceTree = "<group>"; };
+		CB91A5251ECB45C6005F18B3 /* BYScalableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BYScalableHeaderView.m; sourceTree = "<group>"; };
 		CBAEAA271EBB7BE8006140DD /* BYGraphicsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BYGraphicsView.m; sourceTree = "<group>"; };
 		CBAEAA281EBB7BE8006140DD /* BYGraphicsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BYGraphicsView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +107,7 @@
 		CB74F98C1EACDA6C00B8B299 /* SomeDemo */ = {
 			isa = PBXGroup;
 			children = (
+				CB91A5231ECB457D005F18B3 /* ScalableHeader */,
 				CBAEAA261EBB7BC0006140DD /* DrawGraph */,
 				CB74F9901EACDA6C00B8B299 /* AppDelegate.h */,
 				CB74F9911EACDA6C00B8B299 /* AppDelegate.m */,
@@ -142,6 +146,15 @@
 				CB74F9B41EACDA6C00B8B299 /* Info.plist */,
 			);
 			path = SomeDemoUITests;
+			sourceTree = "<group>";
+		};
+		CB91A5231ECB457D005F18B3 /* ScalableHeader */ = {
+			isa = PBXGroup;
+			children = (
+				CB91A5241ECB45C6005F18B3 /* BYScalableHeaderView.h */,
+				CB91A5251ECB45C6005F18B3 /* BYScalableHeaderView.m */,
+			);
+			path = ScalableHeader;
 			sourceTree = "<group>";
 		};
 		CBAEAA261EBB7BC0006140DD /* DrawGraph */ = {
@@ -283,6 +296,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB91A5261ECB45C6005F18B3 /* BYScalableHeaderView.m in Sources */,
 				CB74F9951EACDA6C00B8B299 /* ViewController.m in Sources */,
 				CB74F9921EACDA6C00B8B299 /* AppDelegate.m in Sources */,
 				CBAEAA291EBB7BE8006140DD /* BYGraphicsView.m in Sources */,
