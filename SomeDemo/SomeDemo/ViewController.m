@@ -38,6 +38,14 @@
 - (void)addSubViews {
     
     [self.view addSubview:self.scalableHeaderTableView];
+    
+    NSLog(@"测试冲突解决");
+}
+
+
+- (void)panImage:(UIGestureRecognizer *)gesture {
+    
+    NSLog(@"来啊  冲突一下");
 }
 
 
@@ -53,6 +61,7 @@
     
     static NSString *reuseIdentifier = @"CellReuseIdentifier";
     
+    NSLog(@"wo %@",reuseIdentifier);
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
     
     if (!cell) {
@@ -61,6 +70,8 @@
     }
     
     [cell.textLabel setText:[NSString stringWithFormat:@"%ld",indexPath.row]];
+    reuseIdentifier = @"sga";
+    NSLog(@"shi %@",reuseIdentifier);
     
     return cell;
 }
