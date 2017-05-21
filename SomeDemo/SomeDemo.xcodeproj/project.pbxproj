@@ -233,6 +233,7 @@
 				TargetAttributes = {
 					CB74F9891EACDA6C00B8B299 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 37N6HL65R3;
 					};
 					CB74F9A21EACDA6C00B8B299 = {
 						CreatedOnToolsVersion = 7.2.1;
@@ -439,6 +440,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 37N6HL65R3;
 				INFOPLIST_FILE = SomeDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.xindylin.SomeDemo;
@@ -450,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 37N6HL65R3;
 				INFOPLIST_FILE = SomeDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cc.xindylin.SomeDemo;
