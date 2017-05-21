@@ -17,6 +17,7 @@
 
 @property (nonatomic, strong) UITableView *scalableHeaderTableView;
 @property (nonatomic, strong) BYScalableHeaderView *scalableHeaderView;
+@property (nonatomic, strong) UIImageView *testPanImageView;
 
 @end
 
@@ -38,6 +39,16 @@
 - (void)addSubViews {
     
     [self.view addSubview:self.scalableHeaderTableView];
+    
+    self.testPanImageView = [[UIImageView alloc] initWithFrame:CGRectMake(100, 300, 100, 200)];
+    [self.testPanImageView setUserInteractionEnabled:YES];
+    [self.testPanImageView setContentMode:UIViewContentModeScaleAspectFill];
+//    [self.testPanImageView setClipsToBounds:YES];
+    [self.testPanImageView setImage:[UIImage imageNamed:@"longmao"]];
+    [self.view addSubview:self.testPanImageView];
+    
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panImage:)];
+    [self.testPanImageView addGestureRecognizer:panGesture];
 }
 
 
@@ -102,6 +113,33 @@
     return _scalableHeaderTableView;
 }
 
+#pragma mark 拖动图片
+-(void)panImage:(UIPanGestureRecognizer *)gesture{
+    
+    
+    [gesture.view.superview bringSubviewToFront:gesture.view];
+    CGPoint center = gesture.view.center;
+//    CGFloat cornerRadius = gesture.view.frame.size.width / 2;
+    CGPoint translation = [gesture translationInView:self.view];
+    //NSLog(@"%@", NSStringFromCGPoint(translation));
+    gesture.view.center = CGPointMake(center.x + translation.x, center.y + translation.y);
+    [gesture setTranslation:CGPointZero inView:self.view];
+    
+    if (gesture.state==UIGestureRecognizerStateChanged) {
+        
+        //        CGPoint translation=[gesture translationInView:APPDELEGATE.window];//利用拖动手势的translationInView:方法取得在相对指定视图（控制器根视图）的移动
+        //        ScrollinglV.transform=CGAffineTransformMakeTranslation(translation.x, translation.y);
+        
+        
+    }else if(gesture.state==UIGestureRecognizerStateEnded){
+        
+        
+        //        [UIView animateWithDuration:0.5 animations:^{
+        //            ScrollinglV.transform=CGAffineTransformIdentity;
+        //        }];
+    }
+    
+}
 
 
 
