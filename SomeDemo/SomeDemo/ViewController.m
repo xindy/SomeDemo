@@ -47,7 +47,7 @@
     [self.testPanImageView setImage:[UIImage imageNamed:@"longmao"]];
     [self.view addSubview:self.testPanImageView];
     
-    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panImage:)];
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
     [self.testPanImageView addGestureRecognizer:panGesture];
     NSLog(@"解决了一次代码冲突");
 }
@@ -117,16 +117,51 @@
 }
 
 #pragma mark 拖动图片
--(void)panImage:(UIPanGestureRecognizer *)gesture{
+-(void)panView:(UIPanGestureRecognizer *)gesture{
     
+    //获取当前手势操作的视图对象
+    UIView *currentPanView = gesture.view;
+    //将当前被操作的视图对象移到其父视图的最上层
+    [currentPanView.superview bringSubviewToFront:currentPanView];
     
-    [gesture.view.superview bringSubviewToFront:gesture.view];
-    CGPoint center = gesture.view.center;
-//    CGFloat cornerRadius = gesture.view.frame.size.width / 2;
-    CGPoint translation = [gesture translationInView:self.view];
-    //NSLog(@"%@", NSStringFromCGPoint(translation));
-    gesture.view.center = CGPointMake(center.x + translation.x, center.y + translation.y);
-    [gesture setTranslation:CGPointZero inView:self.view];
+    CGFloat startX = gesture.view.frame.origin.x;//视图对象的起始X点坐标
+    CGFloat startY = gesture.view.frame.origin.y;//视图对象的起始Y点坐标
+    
+    CGFloat width = currentPanView.frame.size.width;//视图对象的宽度
+    CGFloat height = currentPanView.frame.size.height;//视图对象的高度
+    
+    CGPoint translation = [gesture translationInView:currentPanView.superview];//当前需要平移的点位
+    CGFloat currentX = startX + translation.x;//最新的X点坐标（未超出左、右边界时取该值）
+    CGFloat currentY = startY + translation.y;//最新的Y点坐标（未超出上、下边界时取该值）
+    
+    //如果X超过了左边界
+    if (currentX < 0) {
+        
+        currentX = 0.0;
+    }
+    //如果X超过了右边界
+    else if (currentX > (DEVICE_WIDTH - width)) {
+        
+        currentX = DEVICE_WIDTH - width;
+    }
+    
+    //如果Y超过了上边界
+    if (currentY < 0) {
+        
+        currentY = 0.0;
+    }
+    //如果Y超过了下边界
+    else if (currentY > (DEVICE_HEIGHT - height)) {
+        
+        currentY = DEVICE_HEIGHT - height;
+    }
+    
+    [currentPanView setFrame:CGRectMake(currentX, currentY, width, height)];
+    [gesture setTranslation:CGPointZero inView:currentPanView.superview];
+    
+//    CGPoint center = currentPanView.center;//视图对象的起始中心点
+//    gesture.view.center = CGPointMake(center.x + translation.x, center.y + translation.y);
+//    [gesture setTranslation:CGPointZero inView:self.view];
     
     if (gesture.state==UIGestureRecognizerStateChanged) {
         
