@@ -2,7 +2,7 @@
 //  BYScalableHeaderView.m
 //  SomeDemo
 //
-//  Created by 林必里 on 17/5/16.
+//  Created by xindy on 17/5/16.
 //  Copyright © 2017年 xindylin. All rights reserved.
 //
 

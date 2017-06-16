@@ -2,7 +2,7 @@
 //  BYGraphicsView.m
 //  DrawGraph
 //
-//  Created by 华图－林必里 on 17/1/18.
+//  Created by xindy on 17/1/18.
 //  Copyright © 2017年 huatu. All rights reserved.
 //
 
