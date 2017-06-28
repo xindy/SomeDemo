@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A48F9FE1EF38D2500255415 /* BYTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A48F9FD1EF38D2500255415 /* BYTabBar.m */; };
+		2A48FA011EF38D5500255415 /* BYTabBarButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 2A48FA001EF38D5500255415 /* BYTabBarButton.m */; };
 		2AB0255C1EF381600041BBA9 /* BYTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB0255B1EF381600041BBA9 /* BYTabBarController.m */; };
 		2AB0255F1EF381810041BBA9 /* BYNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AB0255E1EF381810041BBA9 /* BYNavigationController.m */; };
 		CB74F98F1EACDA6C00B8B299 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CB74F98E1EACDA6C00B8B299 /* main.m */; };
@@ -39,6 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2A48F9FC1EF38D2500255415 /* BYTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BYTabBar.h; sourceTree = "<group>"; };
+		2A48F9FD1EF38D2500255415 /* BYTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BYTabBar.m; sourceTree = "<group>"; };
+		2A48F9FF1EF38D5500255415 /* BYTabBarButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BYTabBarButton.h; sourceTree = "<group>"; };
+		2A48FA001EF38D5500255415 /* BYTabBarButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BYTabBarButton.m; sourceTree = "<group>"; };
+		2A48FA031EF3B42400255415 /* Macros.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macros.h; sourceTree = "<group>"; };
+		2A48FA041EF3B50D00255415 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		2AB0255A1EF381600041BBA9 /* BYTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BYTabBarController.h; sourceTree = "<group>"; };
 		2AB0255B1EF381600041BBA9 /* BYTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BYTabBarController.m; sourceTree = "<group>"; };
 		2AB0255D1EF381810041BBA9 /* BYNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BYNavigationController.h; sourceTree = "<group>"; };
@@ -90,11 +98,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A48FA021EF3B3B900255415 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2A48FA031EF3B42400255415 /* Macros.h */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		2AB025581EF3811E0041BBA9 /* BYTabBarController */ = {
 			isa = PBXGroup;
 			children = (
 				2AB0255A1EF381600041BBA9 /* BYTabBarController.h */,
 				2AB0255B1EF381600041BBA9 /* BYTabBarController.m */,
+				2A48F9FC1EF38D2500255415 /* BYTabBar.h */,
+				2A48F9FD1EF38D2500255415 /* BYTabBar.m */,
+				2A48F9FF1EF38D5500255415 /* BYTabBarButton.h */,
+				2A48FA001EF38D5500255415 /* BYTabBarButton.m */,
 			);
 			path = BYTabBarController;
 			sourceTree = "<group>";
@@ -135,6 +155,7 @@
 				2AB025591EF381290041BBA9 /* BYNavigationController */,
 				CB91A5231ECB457D005F18B3 /* ScalableHeader */,
 				CBAEAA261EBB7BC0006140DD /* DrawGraph */,
+				2A48FA021EF3B3B900255415 /* Utils */,
 				CB74F9901EACDA6C00B8B299 /* AppDelegate.h */,
 				CB74F9911EACDA6C00B8B299 /* AppDelegate.m */,
 				CB74F9931EACDA6C00B8B299 /* ViewController.h */,
@@ -144,6 +165,7 @@
 				CB74F99B1EACDA6C00B8B299 /* LaunchScreen.storyboard */,
 				CB74F99E1EACDA6C00B8B299 /* Info.plist */,
 				CB74F98D1EACDA6C00B8B299 /* Supporting Files */,
+				2A48FA041EF3B50D00255415 /* PrefixHeader.pch */,
 			);
 			path = SomeDemo;
 			sourceTree = "<group>";
@@ -326,7 +348,9 @@
 				CB91A5261ECB45C6005F18B3 /* BYScalableHeaderView.m in Sources */,
 				CB74F9951EACDA6C00B8B299 /* ViewController.m in Sources */,
 				2AB0255F1EF381810041BBA9 /* BYNavigationController.m in Sources */,
+				2A48FA011EF38D5500255415 /* BYTabBarButton.m in Sources */,
 				CB74F9921EACDA6C00B8B299 /* AppDelegate.m in Sources */,
+				2A48F9FE1EF38D2500255415 /* BYTabBar.m in Sources */,
 				CBAEAA291EBB7BE8006140DD /* BYGraphicsView.m in Sources */,
 				2AB0255C1EF381600041BBA9 /* BYTabBarController.m in Sources */,
 				CB74F98F1EACDA6C00B8B299 /* main.m in Sources */,
@@ -469,6 +493,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 37N6HL65R3;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/SomeDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = SomeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -482,6 +507,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 37N6HL65R3;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/SomeDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = SomeDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
