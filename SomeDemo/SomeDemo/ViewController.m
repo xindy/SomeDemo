@@ -8,6 +8,12 @@
 
 #import "ViewController.h"
 #import "BYScalableHeaderView.h"
+#import "BYScoreSlider.h"
+#import "BYShowMoreOptionsView.h"
+//#import <AddressBookUI/AddressBookUI.h>
+#import <Contacts/Contacts.h>
+//#import <ContactsUI/ContactsUI.h>
+
 
 #define DEVICE_WIDTH [UIScreen mainScreen].bounds.size.width
 #define DEVICE_HEIGHT [UIScreen mainScreen].bounds.size.height
@@ -18,6 +24,8 @@
 @property (nonatomic, strong) UITableView *scalableHeaderTableView;
 @property (nonatomic, strong) BYScalableHeaderView *scalableHeaderView;
 @property (nonatomic, strong) UIImageView *testPanImageView;
+
+@property (nonatomic, strong) NSMutableArray *addressArray;
 
 @end
 
@@ -49,7 +57,82 @@
     
     UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panView:)];
     [self.testPanImageView addGestureRecognizer:panGesture];
-    NSLog(@"解决了一次代码冲突");
+    
+    UIImage *leftImage = [[UIImage imageNamed:@"g_slider_left"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
+    UIImage *rightImage = [[UIImage imageNamed:@"g_slider_right"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 8, 0, 8)];
+    UIImage *thumbImage = [UIImage imageNamed:@"bt_slider_thumb"];
+    
+    BYScoreSlider *scoreSlider = [[BYScoreSlider alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT - 180, SCREEN_WIDTH, 80) defaultTitle:@"滑动估分" titleColor:[UIColor redColor] leftTrackImage:leftImage rightTrackImage:rightImage thumbImage:thumbImage maxValue:5 miniValue:0 defaultValue:444 stepType:ScoreSliderStepTypePointFive];
+    [self.view addSubview:scoreSlider];
+    
+    NSMutableArray *mOptionsArray = [NSMutableArray arrayWithArray:@[@{@"imageName":@"ic_scbt",@"title":@"收藏本题"},@{@"imageName":@"ic_jcbt",@"title":@"纠错本题"},@{@"imageName":@"ic_fxbt",@"title":@"分享本题"}]];
+    BYShowMoreOptionsView *showMoreOptionsView = [[BYShowMoreOptionsView alloc] initWithFrame:CGRectMake(20, 100, 120, 140) bgImage:@"xiala_3" optionsArray:mOptionsArray];
+    [self.view addSubview:showMoreOptionsView];
+    
+    
+//    {
+    
+    self.addressArray = [NSMutableArray new];
+        // 3.创建通信录对象
+        CNContactStore *contactStore = [[CNContactStore alloc] init];
+    [contactStore requestAccessForEntityType:CNEntityTypeContacts completionHandler:^(BOOL granted, NSError * _Nullable error) {
+        if (granted) {
+            // 成功
+        } else {
+            // 失败
+        }
+    }];
+    // 1.获取授权状态
+    CNAuthorizationStatus status = [CNContactStore authorizationStatusForEntityType:CNEntityTypeContacts];
+    
+    // 2.判断授权状态,如果不是已经授权,则直接返回
+    if (status != CNAuthorizationStatusAuthorized) return;
+    
+        // 4.创建获取通信录的请求对象
+        // 4.1.拿到所有打算获取的属性对应的key
+        NSArray *keys = @[CNContactGivenNameKey, CNContactFamilyNameKey, CNContactPhoneNumbersKey];
+    NSLog(@"keys 总共 %ld",[keys count]);
+        
+        // 4.2.创建CNContactFetchRequest对象
+        CNContactFetchRequest *request = [[CNContactFetchRequest alloc] initWithKeysToFetch:keys];
+        
+        // 5.遍历所有的联系人
+        BOOL result = [contactStore enumerateContactsWithFetchRequest:request error:nil usingBlock:^(CNContact * _Nonnull contact, BOOL * _Nonnull stop) {
+            
+            static int i = 0;
+            i++;
+            NSLog(@"循环了 %d",i);
+            // 1.获取联系人的姓名
+            NSString *lastname = contact.familyName;
+            NSString *firstname = contact.givenName;
+            NSLog(@"%@ %@", lastname, firstname);
+            
+            // 2.获取联系人的电话号码
+            NSArray *phoneNums = contact.phoneNumbers;
+            for (CNLabeledValue *labeledValue in phoneNums) {
+                // 2.1.获取电话号码的KEY
+                NSString *phoneLabel = labeledValue.label;
+                
+                // 2.2.获取电话号码
+                CNPhoneNumber *phoneNumer = labeledValue.value;
+                NSString *phoneValue = phoneNumer.stringValue;
+                
+                NSLog(@"%@ %@", phoneLabel, phoneValue);
+                [self.addressArray addObject:phoneValue];
+            }
+            if (stop) {
+                NSLog(@"已经获取完成");
+            }
+            
+            [self.addressArray addObject:firstname];
+        }];
+    
+    if (result) {
+        
+        NSLog(@"全部执行完成  %ld个 %@  ",[self.addressArray count],self.addressArray);
+    }
+//    }
+    
 }
 
 
@@ -85,6 +168,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return 40.0;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self.navigationController pushViewController:[UITableViewController new] animated:YES];
 }
 
 #pragma mark - 实现UIScrollViewDelegate协议内的方法

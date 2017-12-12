@@ -29,6 +29,7 @@
     
     //设置 TabBarController 的子控制器
     [self setupChildControllers];
+    NSLog(@"jiazai BYTabBarController");
 }
 
 - (void)didReceiveMemoryWarning {
@@ -43,11 +44,11 @@
     [self.byTabBar setDelegate:self];
 //    [self.byTabBar setBackgroundColor:[UIColor lightGrayColor]];
     
-    //标题
-    NSArray *titleArray = @[@"发现",@"关注",@"消息",@"我的"];
-    //正常状态的图片
+    //标题（定制的中间按钮放最后）
+    NSArray *titleArray = @[@"发现",@"关注",@"消息",@"我的",@"扫码体验"];
+    //正常状态的图片（定制的中间按钮放最后）
     NSArray *normalImageNameArray = @[@"tabBar_discover",@"tabBar_follow",@"tabBar_message",@"tabBar_mine",@"tabBar_middle"];
-    //选中状态的图片
+    //选中状态的图片（定制的中间按钮放最后）
     NSArray *selectedImageNameArray = @[@"tabBar_discover_selected",@"tabBar_follow_selected",@"tabBar_message_selected",@"tabBar_mine_selected",@"tabBar_middle"];
     
     //设置tabBar的按钮
@@ -98,7 +99,12 @@
 //    [self presentViewController:secondNav animated:YES completion:nil];
 }
 
+#pragma mark - 重写UIView的方法
 
+-(void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    NSLog(@"touchesBegan");
+}
 
 
 @end

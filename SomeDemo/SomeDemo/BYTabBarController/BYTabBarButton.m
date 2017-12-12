@@ -7,20 +7,35 @@
 //
 
 #import "BYTabBarButton.h"
+#define Title_Height
+
+@interface BYTabBarButton ()
+
+@property (nonatomic, assign) BYTabBarButtonType tabBarButtonType;//按钮类型
+@property (nonatomic, assign) CGFloat titleLabelFontSize;//按钮的标题文字大小
+@property (nonatomic, assign) CGFloat titleLabelHeight;//按钮的标题高度
+
+@end
 
 @implementation BYTabBarButton
 
-
-- (instancetype)initWithFrame:(CGRect)frame {
+- (instancetype)initWithFrame:(CGRect)frame butttonType:(BYTabBarButtonType)type titleLabelFontSize:(CGFloat)fontSize titleLabelHeight:(CGFloat)height {
     
     if ([super initWithFrame:frame]) {
+        
+        //指定按钮类型
+        self.tabBarButtonType = type;
+        //指定标题字体大小
+        self.titleLabelFontSize = fontSize;
+        //指定标题高度
+        self.titleLabelHeight = height;
         
         //图片靠下
         [self.imageView setContentMode:UIViewContentModeBottom];
         //标题水平居中
         [self.titleLabel setTextAlignment:NSTextAlignmentCenter];
         //标题字号
-        [self.titleLabel setFont:[UIFont systemFontOfSize:12]];
+        [self.titleLabel setFont:[UIFont systemFontOfSize:fontSize]];
         
         //正常状态时标题颜色
         [self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -34,11 +49,12 @@
     return self;
 }
 
+
 //重写方法，返回图片的frame
 -(CGRect)imageRectForContentRect:(CGRect)contentRect
 {
     CGFloat imageWidth = contentRect.size.width;
-    CGFloat imageHeight = contentRect.size.height * 0.6;
+    CGFloat imageHeight = contentRect.size.height - self.titleLabelHeight;
     
     return CGRectMake(0, 0, imageWidth, imageHeight);
 }
@@ -46,11 +62,10 @@
 //重写方法，返回title的frame
 -(CGRect)titleRectForContentRect:(CGRect)contentRect
 {
-    CGFloat titleY = contentRect.size.height * 0.6;
+    CGFloat titleY = contentRect.size.height - self.titleLabelHeight;
     CGFloat titleWidth = contentRect.size.width;
-    CGFloat titleHeight = contentRect.size.height - titleY;
     
-    return CGRectMake(0, titleY, titleWidth, titleHeight);
+    return CGRectMake(0, titleY, titleWidth, self.titleLabelHeight);
 }
 
 

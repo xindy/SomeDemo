@@ -20,10 +20,10 @@
 
 @end
 
-@interface BYTabBar : UIView
+@interface BYTabBar : UITabBar
 
 //代理
-@property (nonatomic, weak) id <BYTabBarDelegate> delegate;
+@property (nonatomic, weak) id <BYTabBarDelegate> byTabBarDelegate;
 
 /**
  设置TabBar各项的标题、图片

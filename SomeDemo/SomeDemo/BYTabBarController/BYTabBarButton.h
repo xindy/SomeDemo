@@ -8,7 +8,26 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum : NSUInteger {
+    BYTabBarButtonTypeDefault,
+    BYTabBarButtonTypeMiddleWithTitle,
+    BYTabBarButtonTypeMiddleNoTitle,
+    
+} BYTabBarButtonType;
+
 @interface BYTabBarButton : UIButton
+
+
+/**
+ <#Description#>
+
+ @param frame <#frame description#>
+ @param type <#type description#>
+ @param fontSize <#fontSize description#>
+ @param height <#height description#>
+ @return <#return value description#>
+ */
+- (instancetype)initWithFrame:(CGRect)frame butttonType:(BYTabBarButtonType)type titleLabelFontSize:(CGFloat)fontSize titleLabelHeight:(CGFloat)height;
 
 
 @end
