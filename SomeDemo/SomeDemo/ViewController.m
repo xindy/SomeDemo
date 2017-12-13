@@ -14,6 +14,8 @@
 #import <Contacts/Contacts.h>
 //#import <ContactsUI/ContactsUI.h>
 
+#import <ReactiveObjC/ReactiveObjC.h>
+
 
 #define DEVICE_WIDTH [UIScreen mainScreen].bounds.size.width
 #define DEVICE_HEIGHT [UIScreen mainScreen].bounds.size.height
@@ -132,6 +134,15 @@
         NSLog(@"全部执行完成  %ld个 %@  ",[self.addressArray count],self.addressArray);
     }
 //    }
+    
+    UITextField *testTF = [[UITextField alloc] initWithFrame:CGRectMake(20, DEVICE_HEIGHT - 100, DEVICE_WIDTH - 40, 20)];
+    [testTF setPlaceholder:@"test it"];
+    [self.view addSubview:testTF];
+    
+    [testTF.rac_textSignal subscribeNext:^(NSString * _Nullable x) {
+        
+        NSLog(@"next is %@",x);
+    }];
     
 }
 
