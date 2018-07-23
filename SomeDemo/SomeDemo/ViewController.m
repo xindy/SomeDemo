@@ -14,7 +14,7 @@
 #import <Contacts/Contacts.h>
 //#import <ContactsUI/ContactsUI.h>
 
-#import <ReactiveObjC/ReactiveObjC.h>
+//#import <ReactiveObjC/ReactiveObjC.h>
 
 
 #define DEVICE_WIDTH [UIScreen mainScreen].bounds.size.width
@@ -139,11 +139,11 @@
     [testTF setPlaceholder:@"test it"];
     [self.view addSubview:testTF];
     
-    [testTF.rac_textSignal subscribeNext:^(NSString * _Nullable x) {
-        
-        NSLog(@"next is %@",x);
-    }];
-    
+//    [testTF.rac_textSignal subscribeNext:^(NSString * _Nullable x) {
+//
+//        NSLog(@"next is %@",x);
+//    }];
+
 }
 
 

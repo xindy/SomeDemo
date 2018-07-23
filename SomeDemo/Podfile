@@ -8,19 +8,8 @@ target 'SomeDemo' do
   # use_frameworks!
 
   # Pods for SomeDemo
-  pod 'ReactiveObjC', '~> 3.0.0'
-  
-  
-  
+#  pod 'ReactiveObjC', '~> 3.0.0'
+  pod 'MLeaksFinder', '~> 1.0.0'
 
-  target 'SomeDemoTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-  target 'SomeDemoUITests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
 
 end

@@ -1,12 +1,15 @@
 PODS:
-  - ReactiveObjC (3.0.0)
+  - FBRetainCycleDetector (0.1.4)
+  - MLeaksFinder (1.0.0):
+    - FBRetainCycleDetector
 
 DEPENDENCIES:
-  - ReactiveObjC (~> 3.0.0)
+  - MLeaksFinder (~> 1.0.0)
 
 SPEC CHECKSUMS:
-  ReactiveObjC: ce79989e8684b9086b5f8d0c74bc7b81a8729c9e
+  FBRetainCycleDetector: 46f8179bbb1c587deee3ea838a1a3ee02acf5015
+  MLeaksFinder: 8c435bd2f6d070af18cff082b503b21adc130fc0
 
-PODFILE CHECKSUM: 2e75e1af5b0b1255cb56827e6188d65eab926a8d
+PODFILE CHECKSUM: 287806a09fcbc291da1befeaed4b8f4c70d2309b
 
 COCOAPODS: 1.3.1
